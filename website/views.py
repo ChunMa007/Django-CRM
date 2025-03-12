@@ -10,8 +10,8 @@ def home(request):
     
     # Check to see if logging in
     if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST['username'] #admin
+        password = request.POST['password'] #fhel123
         
         # Authenticate
         user = authenticate(request, username=username, password=password)
@@ -86,7 +86,7 @@ def update_record(request, pk):
             form.save()
             messages.success(request, "Record has been updated")
             return redirect('home')
-        return render(request, 'update_record.html', {'form': form})
+        return render(request, 'update_record.html', {'form': form, 'current_record': current_record})
     else:
         messages.success(request, "You Must Be Logged In")
         return redirect('home')
