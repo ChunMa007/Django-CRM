@@ -13,7 +13,7 @@
         <br>
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="myAlert">
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -23,6 +23,15 @@
         {% block content %}
         {% endblock %}
     </div>
+
+    <script>
+        setTimeout(function() {
+            let alert = document.getElementById('myAlert');
+            if(alert) {
+                alert.remove()
+            }
+        }, 2000)
+    </script>
     
 </body>
 </html>
